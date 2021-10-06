@@ -1,19 +1,20 @@
-from lx import lexer
 
-if __name__ == '__main__':
-    # Test it out
-    data = '''
-     absb = 3 + 4 * 10
-       + - 20.2 *2;
-     '''
+from ply_parser import parser
 
-    # Give the lexer some input
-    lexer.input(data)
+"""
+import operator
 
-    # Tokenize
-    while True:
-        tok = lexer.token()
-        if not tok:
-            break  # No more input
-        print(tok)
+input = [12, 4, (operator.add, 2), 5, (operator.add, 2)]
+stack = []
 
+for t in input:
+    if type(t) is int:
+        stack.append(t)
+    else:
+        a = []
+        for _ in range(t[1]):
+            a.append(stack.pop())
+        stack.insert(0, t[0](*a))
+
+print(stack)
+"""
